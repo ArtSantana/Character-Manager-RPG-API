@@ -1,7 +1,7 @@
 package main
 
 import (
-	"charactersManager/character"
+	"charactersManager/controller"
 	"fmt"
 	"log"
 	"net/http"
@@ -16,7 +16,7 @@ func main() {
 	router.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
 		fmt.Fprintln(res, "Hello World")
 	})
-	router.HandleFunc("/characters", character.GetCharacters).Methods("GET")
+	router.HandleFunc("/characters", controller.GetCharacters).Methods("GET")
 
 	log.Println("Server listening on port", port)
 	log.Fatalln(http.ListenAndServe(port, router))
