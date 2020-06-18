@@ -41,7 +41,18 @@ func SelectQuery(table string, condition string) []models.Character {
 		}
 
 		characters = append(characters, character)
-
 	}
 	return characters
+}
+
+func PostCharacterInDatabase(character models.CharacterNoID) bool {
+	queryString := fmt.Sprintf("INSERT INTO characters (name, level, class, race) VALUES ('%s', '%d', '%s', '%s');", character.Name, character.Level, character.Class, character.Race)
+
+	result, err := db.Query(queryString)
+
+	if err != nil {
+		result = result
+		return true
+	}
+	return false
 }

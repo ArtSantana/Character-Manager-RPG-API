@@ -17,6 +17,7 @@ func main() {
 		fmt.Fprintln(res, "Hello World")
 	})
 	router.HandleFunc("/characters", controller.GetCharacters).Methods("GET")
+	router.HandleFunc("/characters", controller.PostCharacter).Methods("POST")
 
 	log.Println("Server listening on port", port)
 	log.Fatalln(http.ListenAndServe(port, router))
